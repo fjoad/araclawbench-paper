@@ -1,0 +1,14 @@
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+main.pdf
+refs/pdfs/
+notes/private/
+.DS_Store
+refs/proposal.pdf

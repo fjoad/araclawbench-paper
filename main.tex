@@ -1,0 +1,70 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2027_conference,times}
+
+\input{math_commands.tex}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+% ---------------------------------------------------------------------------
+% Draft machinery — none of this may survive into the submitted PDF.
+%
+% \extrap{...}  : a number EXTRAPOLATED from partial results (the 83-task web
+%                 experiment), standing in until the full-run audit lands.
+%                 Rendered loud purple so it can never hide.
+% \todo{...}    : an open writing task, rendered loud red.
+% The Makefile's `make check` target fails if either macro is still used.
+% ---------------------------------------------------------------------------
+\newcommand{\extrap}[1]{\textcolor{violet}{#1\textsuperscript{\tiny EXT}}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{AraClawBench: Working Title\thanks{Title placeholder — settled after the lit review.}}
+
+% Anonymous for submission. Author block filled only at camera-ready
+% (\iclrfinalcopy). NEVER cite or link the public paper repo in this PDF.
+\author{Anonymous authors\\
+Paper under double-blind review}
+
+%\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\todo{Abstract — written last, after the results land.}
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_benchmark}
+\input{sections/04_harness}
+\input{sections/05_experimental_setup}
+\input{sections/06_results}
+\input{sections/07_analysis}
+\input{sections/08_conclusion}
+
+\subsubsection*{Ethics statement}
+\todo{Optional but we will have one: consequential-action blocking, disposable
+accounts, no real side effects, persona identity is synthetic.}
+
+\subsubsection*{Reproducibility statement}
+\todo{Harness + task packages public; evidence-based grading; exact model
+deployments recorded in run manifests.}
+
+\subsubsection*{AI-use statement}
+\todo{Mandatory for ICLR 2027. Honest account: AI agents used for task
+scouting, checker implementation, run operation, and drafting assistance;
+all merges human-gated. Write carefully.}
+
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}
