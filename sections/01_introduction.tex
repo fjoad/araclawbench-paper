@@ -1,4 +1,101 @@
-% PROVISIONAL SKELETON — real section structure is decided by the lit review
-% (notes/ holds the per-paper structural skeletons that will reshape this).
-\section{introduction}
-\todo{introduction}
+\section{Introduction}
+\label{sec:intro}
+
+Computer-use agents now operate real software the way people do: they read the
+screen, move a mouse, and type. Recent benchmarks show these agents completing
+tasks on real desktop applications \citep{xie2024osworld}, live websites
+\citep{zhang2026clawbench}, command-line environments
+\citep{merrill2026terminalbench}, and mobile devices
+\citep{rawles2024androidworld}. As these agents move into products, they will be
+asked to serve users in many languages. Whether they serve those users equally
+well is an open measurement question.
+
+Early evidence says they do not. A cross-lingual performance gap has now been
+observed in every multilingual agent evaluation we are aware of.
+\citet{yang2025macosworld} localize a macOS environment into five languages and
+report an average degradation of 28.8\% in Arabic, the worst of their languages.
+\citet{caciolai2026omnilingual} translate an agentic benchmark into ten
+languages and find a universal gap of 8.8 to 18.4 pass@3 points that does not
+close with model scale. \citet{wang2025xwebagentbench} report a lag of more than
+20\% across fourteen languages in a simulated shopping environment, and
+\citet{chen2025mprgui} find consistent non-English deficits in GUI perception
+and reasoning. Across these studies, Arabic is consistently at or near the
+bottom.
+
+These findings motivate our work, but they also expose a measurement problem.
+Every multilingual agent benchmark to date builds its non-English arms by
+machine translation, and every one runs in a sandbox or simulation rather than
+the real digital environment of the target users.
+\citet{kim2026lilt} show that this is not a detail: auditing and correcting the
+machine-translated arms of an agentic benchmark changed model scores by up to
+32.7 points, meaning a substantial share of the reported multilingual gap was
+measurement error rather than model failure. \citet{caciolai2026omnilingual}
+reach a similar conclusion from the other direction, attributing 35\% of
+observed failures to translation defects and 10\% to evaluation artifacts.
+Prior work also says little about \emph{how} agents fail in Arabic. The
+mechanisms reported so far are coarse: left-to-right click biases in mirrored
+interfaces \citep{yang2025macosworld}, inflated token costs for non-Latin
+scripts \citep{wang2025xwebagentbench,hofman2025maps}, and a behavioral shift
+toward exploration over action \citep{caciolai2026omnilingual}. None of these
+studies observes an agent inside a real Arabic-localized operating system, on
+real Arabic-facing websites, or in any Arabic dialect.
+
+No existing benchmark can therefore answer a question that is simple to state:
+does the same agent complete the same real task as well for an Arabic-speaking
+user as for an English-speaking one, and if not, what exactly goes wrong? The
+answer requires holding the task constant, translating it with verified
+fidelity, running both arms in matched real environments, and reading the
+evidence behind every score. That is what we build.
+
+We present \textbf{AraClawBench}, a paired English--Arabic benchmark for
+computer-use agents. AraClawBench contains 221 tasks in three families: 171
+tasks borrowed from established benchmarks \citep{xie2024osworld,
+zhang2026clawbench, merrill2026terminalbench} and 50 native tasks drawn from the
+digital life of an Arab user, from regional airlines and property portals to
+charity donations and government-adjacent services. Every task carries a
+human-translated Modern Standard Arabic instruction; a fixed subset carries four
+additional dialect arms (Egyptian, Syrian, Qatari, and Sudanese). Both language
+arms of a task run on matched virtual machines, English and Arabic-localized,
+and the agent receives only screenshots and mouse and keyboard control. Each
+task is graded by a deterministic checker that reads recorded evidence, never
+the agent's self-report. Consequential actions --- payments, job applications,
+public posts --- are performed against the real site but captured and blocked at
+the network layer before they take effect, following \citet{zhang2026clawbench}.
+Every English--Arabic score divergence is re-run and adjudicated from evidence
+at $k{=}3$, and any cell whose environment, recording, or checker failed is
+excluded as an evaluation error rather than scored as a model failure.
+
+Using this benchmark we evaluate four frontier models: GPT-5.4, Claude Opus
+4.8, Claude Sonnet 5, and Gemini 3.7 Flash.
+\todo{Headline results paragraph once the audit lands: overall paired gap per
+model with significance; whether the gap is universal across models; the
+attribution decomposition (genuine failures vs.\ translation defects vs.\
+evaluation artifacts); two or three leading mechanisms with counts; the
+provenance split (human-translated vs.\ model-drafted arms); the dialect
+result.}
+
+Our contributions are:
+\begin{enumerate}
+    \item \textbf{The first paired English--Arabic computer-use benchmark.} 221
+    real-environment tasks across desktop, web, and terminal, with
+    human-translated Modern Standard Arabic arms, four dialect arms, and 50
+    native Arab-world tasks. To our knowledge this includes the first agentic
+    evaluation in any Arabic dialect.
+    \item \textbf{A validity methodology for cross-language agent measurement.}
+    Matched-environment paired cells; test-enforced frozen instructions with
+    verbatim literal parity across arms; deterministic evidence-based checkers;
+    capture-and-block grading of consequential actions; evaluation errors
+    excluded rather than scored; $k{=}3$ adjudication of divergent pairs. This
+    directly addresses the translation-induced measurement error documented by
+    \citet{kim2026lilt}.
+    \item \textbf{A controlled measurement of the Arabic gap.} A paired
+    evaluation of four frontier models on the full corpus, with per-family
+    significance testing, a gap attribution decomposition, and a
+    mechanism-level failure taxonomy grounded in per-cell evidence.
+    \item \textbf{Findings about the Arabic web itself.} Constructing the
+    benchmark produced two ecosystem results: most of the Arabic web reachable
+    by these tasks is machine-translated rather than natively Arabic, and
+    phone-verification and CAPTCHA walls structurally exclude entire categories
+    of regional services from agent evaluation. We report both with a full
+    exclusion table.
+\end{enumerate}

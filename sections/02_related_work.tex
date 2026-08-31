@@ -1,4 +1,79 @@
-% PROVISIONAL SKELETON — real section structure is decided by the lit review
-% (notes/ holds the per-paper structural skeletons that will reshape this).
-\section{related work}
-\todo{related work}
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Computer-use agent benchmarks.}
+Benchmarks for agents that operate real software span three environment
+families. On the desktop, OSWorld provides 369 tasks in executable virtual
+machines with per-task evaluation scripts \citep{xie2024osworld}. On the web,
+WebArena self-hosts realistic replicas of common sites \citep{zhou2024webarena},
+while ClawBench evaluates agents directly on 144 live production websites,
+capturing and blocking each task's final submission request so that real-world
+side effects cannot occur \citep{zhang2026clawbench}. In the terminal,
+Terminal-Bench curates hard, human-verified tasks with outcome-checking tests
+\citep{merrill2026terminalbench}. Related environments cover mobile devices
+\citep{rawles2024androidworld}, simulated workplaces \citep{xu2024agentcompany},
+and repository-level software engineering \citep{jimenez2024swebench}.
+Evaluations on live websites have proven harder than sandbox results suggest:
+under human evaluation on real sites, reported web-agent success rates fall by
+tens of points \citep{xue2025illusion}. All of these benchmarks evaluate a
+single language, almost always English. AraClawBench borrows tasks from three of
+them \citep{xie2024osworld, zhang2026clawbench, merrill2026terminalbench}
+precisely so that its English arm stays comparable to established baselines
+while its Arabic arm measures something no upstream benchmark covers.
+
+\paragraph{Multilingual agent evaluation.}
+A recent line of work extends agent benchmarks beyond English.
+macOSWorld localizes an interactive macOS environment into five languages and
+finds Arabic worst, with left-to-right click biases in mirrored interfaces
+\citep{yang2025macosworld}. OmnilingualGAIA2 machine-translates a simulated
+tool-use benchmark into ten languages and finds a universal, scale-resistant
+gap concentrated in tool orchestration \citep{caciolai2026omnilingual}.
+X-WebAgentBench translates a simulated shopping environment into fourteen
+languages \citep{wang2025xwebagentbench}, MPR-GUI builds aligned multilingual
+GUI perception tests \citep{chen2025mprgui}, MAPS extends four agentic
+benchmarks into twelve languages and ties degradation to the share of
+non-English input tokens \citep{hofman2025maps}, and PolyWorkBench authors
+multilingual workplace workflows natively \citep{li2026polyworkbench}.
+Two properties are shared by all of this work. First, with the partial
+exception of PolyWorkBench, the non-English arms are produced by machine
+translation; GAIA-v2-LILT demonstrates that correcting such arms with bilingual
+human audit moves agent scores by up to 32.7 points, so translation quality is
+load-bearing, not cosmetic \citep{kim2026lilt}. Second, every environment is a
+sandbox or simulation; none observes an agent in a localized operating system
+on live regional websites. No prior work evaluates any Arabic dialect, and none
+includes tasks native to the target region rather than translated from Western
+originals.
+
+\paragraph{Arabic and dialectal evaluation.}
+Arabic NLP evaluation has established that models handle Modern Standard
+Arabic far better than dialects: AraDiCE builds dialectal and cultural
+benchmarks by machine translation with extensive human post-editing and finds
+that models understand dialects better than they generate them
+\citep{mousi2024aradice}. This line of work is confined to static text tasks.
+AraClawBench extends dialect evaluation to interactive agents: the same
+computer-use task, issued in Egyptian, Syrian, Qatari, or Sudanese Arabic, on
+the same Arabic machine.
+
+\paragraph{Benchmark validity.}
+A parallel literature examines whether agent benchmarks measure what they
+claim. The Agentic Benchmark Checklist formalizes task validity and outcome
+validity and finds violations in most popular agentic benchmarks, including
+web-drift breakage in OSWorld's browser tasks \citep{zhu2025abc}.
+\citet{shao2026protocolvalidity} formulate protocol validity --- a score
+supports a capability claim only if the protocol keeps that capability
+necessary for success --- and document reward hacking across fifteen
+benchmarks. Task-design guidelines from Terminal-Bench reviewing emphasize
+outcome-checking tests and adversarial review \citep{bercovich2026guidelines}.
+For cross-language measurement these concerns compound: a language gap can be
+manufactured by translation defects, evaluation artifacts, or environment
+faults as easily as by model limitations \citep{kim2026lilt,
+caciolai2026omnilingual}. AraClawBench's design --- frozen instructions with
+enforced literal parity, deterministic evidence-based grading, evaluation
+errors excluded from scores, and per-divergence adjudication --- is our answer
+to exactly this compounding.
+
+\medskip
+\noindent In sum: the cross-lingual agent gap is established, Arabic is its
+consistent worst case, and the existing evidence rests on machine-translated
+tasks in simulated environments with no dialect coverage and no native tasks.
+AraClawBench occupies that composite gap.
