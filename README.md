@@ -41,5 +41,6 @@ benchmark itself lives in its own repository.
   structure, decisions
 - `tables/` — generated result tables (`.tex`), never hand-edited
 - `figures/` — figures
-- `references.bib` — the bibliography (target: 40–60 entries, ≥1 page)
+- `references.bib` — the bibliography (target ~20 entries, flexible; last ~2
+  years; A* venues or genuinely influential — quality over count)
 - `refs/pdfs/` — collected reference papers (gitignored)
