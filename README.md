@@ -24,7 +24,7 @@ benchmark itself lives in its own repository.
 
 - **No hand-typed result numbers.** Real numbers enter via generated tables in
   `tables/` (produced from the benchmark repo's audit ledgers).
-- Numbers extrapolated from the partial 83-task web run are wrapped in
+- Numbers extrapolated from the prior 83-task run (65 desktop + 15 terminal + 3 web, EN/MSA + dialects) are wrapped in
   `\extrap{...}` (purple, marked EXT). `\todo{...}` marks open writing.
   **`make check` fails while either macro is still in use** — run it before
   any submission or Overleaf upload of a "final" version.
