@@ -1,0 +1,466 @@
+{
+ "language": {
+  "en": {
+   "pass": 43,
+   "n": 78,
+   "rate": 0.5512820512820513,
+   "ci": [
+    0.4410917185751463,
+    0.6566580810377646
+   ]
+  },
+  "msa": {
+   "pass": 34,
+   "n": 78,
+   "rate": 0.4358974358974359,
+   "ci": [
+    0.33143062712963534,
+    0.5463821233542262
+   ]
+  },
+  "eg": {
+   "pass": 16,
+   "n": 75,
+   "rate": 0.21333333333333335,
+   "ci": [
+    0.13580086342007996,
+    0.31880178289861477
+   ]
+  },
+  "sy": {
+   "pass": 16,
+   "n": 76,
+   "rate": 0.21052631578947367,
+   "ci": [
+    0.13395033382180127,
+    0.31495850568041306
+   ]
+  },
+  "qa": {
+   "pass": 17,
+   "n": 76,
+   "rate": 0.2236842105263158,
+   "ci": [
+    0.1446106442066905,
+    0.3293477934999686
+   ]
+  },
+  "sd": {
+   "pass": 14,
+   "n": 74,
+   "rate": 0.1891891891891892,
+   "ci": [
+    0.11617864171285915,
+    0.292877698341816
+   ]
+  }
+ },
+ "pairs": {
+  "en_vs_msa": {
+   "n": 78,
+   "both": 32,
+   "first_only": 11,
+   "second_only": 2,
+   "both_fail": 33,
+   "gap": 0.11538461538461539,
+   "p": 0.0224609375
+  },
+  "msa_vs_eg": {
+   "n": 75,
+   "both": 13,
+   "first_only": 21,
+   "second_only": 3,
+   "both_fail": 38,
+   "gap": 0.24,
+   "p": 0.0002771615982055664
+  },
+  "msa_vs_sy": {
+   "n": 76,
+   "both": 14,
+   "first_only": 20,
+   "second_only": 2,
+   "both_fail": 40,
+   "gap": 0.23684210526315788,
+   "p": 0.00012111663818359375
+  },
+  "msa_vs_qa": {
+   "n": 76,
+   "both": 14,
+   "first_only": 20,
+   "second_only": 3,
+   "both_fail": 39,
+   "gap": 0.2236842105263158,
+   "p": 0.00048828125
+  },
+  "msa_vs_sd": {
+   "n": 74,
+   "both": 12,
+   "first_only": 21,
+   "second_only": 2,
+   "both_fail": 39,
+   "gap": 0.25675675675675674,
+   "p": 6.604194641113281e-05
+  },
+  "en_vs_eg": {
+   "n": 75,
+   "both": 15,
+   "first_only": 28,
+   "second_only": 1,
+   "both_fail": 31,
+   "gap": 0.36,
+   "p": 1.1175870895385742e-07
+  },
+  "en_vs_sy": {
+   "n": 76,
+   "both": 16,
+   "first_only": 27,
+   "second_only": 0,
+   "both_fail": 33,
+   "gap": 0.35526315789473684,
+   "p": 1.4901161193847656e-08
+  },
+  "en_vs_qa": {
+   "n": 76,
+   "both": 15,
+   "first_only": 28,
+   "second_only": 2,
+   "both_fail": 31,
+   "gap": 0.34210526315789475,
+   "p": 8.67992639541626e-07
+  },
+  "en_vs_sd": {
+   "n": 74,
+   "both": 12,
+   "first_only": 30,
+   "second_only": 2,
+   "both_fail": 30,
+   "gap": 0.3783783783783784,
+   "p": 2.4633482098579407e-07
+  }
+ },
+ "family": {
+  "desktop": {
+   "en": [
+    31,
+    62
+   ],
+   "msa": [
+    26,
+    62
+   ],
+   "eg": [
+    11,
+    59
+   ],
+   "sy": [
+    10,
+    60
+   ],
+   "qa": [
+    13,
+    60
+   ],
+   "sd": [
+    10,
+    58
+   ]
+  },
+  "web": {
+   "en": [
+    2,
+    2
+   ],
+   "msa": [
+    2,
+    2
+   ],
+   "eg": [
+    0,
+    2
+   ],
+   "sy": [
+    0,
+    2
+   ],
+   "qa": [
+    0,
+    2
+   ],
+   "sd": [
+    0,
+    2
+   ]
+  },
+  "terminal": {
+   "en": [
+    10,
+    14
+   ],
+   "msa": [
+    6,
+    14
+   ],
+   "eg": [
+    5,
+    14
+   ],
+   "sy": [
+    6,
+    14
+   ],
+   "qa": [
+    4,
+    14
+   ],
+   "sd": [
+    4,
+    14
+   ]
+  }
+ },
+ "complete_case": {
+  "n": 73,
+  "pattern_counts": {
+   "FFFFFF": 27,
+   "PPFFFF": 12,
+   "PFFFFF": 8,
+   "PPPPPP": 6,
+   "PPFPPP": 3,
+   "PPPFFF": 2,
+   "PPPPPF": 2,
+   "PPFPFF": 2,
+   "PPFFPF": 1,
+   "FPFFFP": 1,
+   "PPPFPP": 1,
+   "FPFFFF": 1,
+   "FFPFPP": 1,
+   "PFPFFP": 1,
+   "PFPPFF": 1,
+   "PPPFPF": 1,
+   "PPPPFP": 1,
+   "PFFPPF": 1,
+   "FFFFPF": 1
+  },
+  "dialect_pass_count_distribution": {
+   "0": 48,
+   "1": 7,
+   "2": 4,
+   "3": 8,
+   "4": 6
+  },
+  "msa_vs_dialect_majority": {
+   "msa_fail__dialects_fail": 36,
+   "msa_pass__dialects_fail": 19,
+   "msa_pass__dialects_pass": 13,
+   "msa_fail__dialects_pass": 1,
+   "msa_fail__dialects_tie": 3,
+   "msa_pass__dialects_tie": 1
+  },
+  "msa_majority_disagreements": [
+   {
+    "task_uid": "osworld/0e47de2a-32e0-456c-a366-8c607ef7a9d2",
+    "canonical_id": "ACB-B006",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "osworld/0e763496-b6bb-4508-a427-fad0b6c3e195",
+    "canonical_id": "ACB-B007",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "osworld/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+    "canonical_id": "ACB-B008",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "osworld/2888b4e6-5b47-4b57-8bf5-c73827890774",
+    "canonical_id": "ACB-B012",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/3a93cae4-ad3e-403e-8c12-65303b271818",
+    "canonical_id": "ACB-B019",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/986fc832-6af2-417c-8845-9272b3a1528b",
+    "canonical_id": "ACB-B043",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/98e8e339-5f91-4ed2-b2b2-12647cb134f4",
+    "canonical_id": "ACB-B044",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/a503b07f-9119-456b-b75d-f5146737d24f",
+    "canonical_id": "ACB-B048",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/a96b564e-dbe9-42c3-9ccf-b4498073438a",
+    "canonical_id": "ACB-B051",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/abed40dc-063f-4598-8ba5-9fe749c0615d",
+    "canonical_id": "ACB-B053",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "osworld/c7c1e4c3-9e92-4eba-a4b8-689953975ea4",
+    "canonical_id": "ACB-B060",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/ce88f674-ab7a-43da-9201-468d38539e4a",
+    "canonical_id": "ACB-B062",
+    "msa": "fail",
+    "dialect_majority": "pass",
+    "dialect_passes": 3
+   },
+   {
+    "task_uid": "osworld/d53ff5ee-3b1a-431e-b2be-30ed2673079b",
+    "canonical_id": "ACB-B063",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/e528b65e-1107-4b8c-8988-490e4fece599",
+    "canonical_id": "ACB-B071",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "osworld/edb61b14-a854-4bf5-a075-c8075c11293a",
+    "canonical_id": "ACB-B073",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "osworld/f201fbc3-44e6-46fc-bcaa-432f9815454c",
+    "canonical_id": "ACB-B074",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "terminal-bench/pandas-etl",
+    "canonical_id": "ACB-B167",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "terminal-bench/tree-directory-parser",
+    "canonical_id": "ACB-B171",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 1
+   },
+   {
+    "task_uid": "clawbench-v2/630",
+    "canonical_id": "ACB-B134",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   },
+   {
+    "task_uid": "clawbench-v2/1095",
+    "canonical_id": "ACB-B142",
+    "msa": "pass",
+    "dialect_majority": "fail",
+    "dialect_passes": 0
+   }
+  ]
+ },
+ "steps": {
+  "en": {
+   "median": 24.5,
+   "n": 38
+  },
+  "msa": {
+   "median": 27.0,
+   "n": 54
+  },
+  "eg": {
+   "median": 21,
+   "n": 75
+  },
+  "sy": {
+   "median": 18.5,
+   "n": 76
+  },
+  "qa": {
+   "median": 15.0,
+   "n": 76
+  },
+  "sd": {
+   "median": 21.0,
+   "n": 74
+  }
+ },
+ "corpus": {
+  "desktop": {
+   "Calc": 24,
+   "Multi-app": 34,
+   "Chrome": 9,
+   "Writer": 14,
+   "Other apps": 7,
+   "Impress": 11
+  },
+  "web": {
+   "Daily life & health": 18,
+   "Jobs": 8,
+   "Office & personal": 20,
+   "Education & reading": 17,
+   "Entertainment & hobbies": 14,
+   "Rating & reviews": 4,
+   "Shopping, travel & finance": 13,
+   "Charity & culture": 5
+  },
+  "terminal": {
+   "Data processing": 13,
+   "Security, system & other": 10
+  }
+ },
+ "stop": {
+  "desktop|max_steps": 85,
+  "desktop|agent_done": 135,
+  "desktop|model_done": 16,
+  "desktop|agent_fail": 21,
+  "desktop|budget_timeout": 1,
+  "desktop|stuck": 2,
+  "terminal|model_done": 3,
+  "terminal|agent_done": 21,
+  "terminal|max_steps": 22,
+  "terminal|agent_fail": 2,
+  "terminal|budget_timeout": 1,
+  "web|max_steps": 8
+ }
+}

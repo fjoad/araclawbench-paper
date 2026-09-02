@@ -12,3 +12,4 @@ refs/pdfs/
 notes/private/
 .DS_Store
 refs/proposal.pdf
+.venv/

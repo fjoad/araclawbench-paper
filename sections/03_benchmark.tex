@@ -53,7 +53,7 @@ exists because a mistranslated instruction produces a fake language gap
 \label{sec:corpus}
 
 AraClawBench has 221 tasks in three families: desktop, web, and terminal.
-Table~\ref{tab:corpus} summarizes the composition.
+Table~\ref{tab:corpus} and Figure~\ref{fig:corpus} summarize the composition.
 
 \paragraph{Borrowed tasks.}
 171 tasks come from three established benchmarks: 77 desktop tasks from
@@ -93,6 +93,13 @@ reports the full list of excluded and substituted tasks with the reason for
 each (Appendix~\ref{app:exclusions}). We treat these walls as a finding about
 the ecosystem, not only as a limitation: a large share of the everyday Arab
 web is closed to agents by design.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.72\linewidth]{figures/corpus_sunburst.pdf}
+    \caption{The 221 tasks by family (inner ring) and by application or category (outer ring).}
+    \label{fig:corpus}
+\end{figure}
 
 \begin{table}[t]
 \centering

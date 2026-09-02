@@ -1,65 +1,131 @@
 \section{Results}
 \label{sec:results}
 
-\todo{Every number in this section is generated from the audit ledgers into
-\texttt{tables/}. The values below are placeholders from the audited
-August~17 run (GPT-5.4, 78 desktop and terminal pairs) and are marked as
-extrapolated until the full arms are audited.}
+Every number in this section is produced by a script from the audited run
+ledgers; the tables are generated files. We first report the completed and
+fully audited six-language experiment with GPT-5.4 on the borrowed desktop and
+terminal tasks, then the status of the multi-model experiment.
+\todo{Replace the second part with the four-model results once audited.}
+
+\subsection{Six languages, one model}
+\label{sec:six}
+
+\paragraph{Setup.}
+GPT-5.4 ran every borrowed task that had a checker at the time in English and
+MSA, and every task with dialect translations in the four dialects, all on the
+same Arabic machine for the Arabic arms. After adjudication, \nven{} tasks have
+a genuine English and MSA verdict (\ntasksdesktop{} desktop,
+\ntasksterminal{} terminal, \ntasksweb{} web), and between \nvsd{} and \nveg{}
+tasks have a genuine verdict in each dialect. Six invalid cells were excluded
+as evaluation errors; every one was a machine-readiness failure before the
+model acted.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.62\linewidth]{figures/res_six_language.pdf}
+    \caption{Success rate of GPT-5.4 on the same tasks in six languages, with
+    95\% Wilson intervals. Each bar's denominator is the number of tasks with a
+    genuine verdict in that language.}
+    \label{fig:six}
+\end{figure}
 
 \paragraph{The gap is real and ordered.}
-On the audited GPT-5.4 pairs, the success rate falls from \extrap{55.1\%} in
-English to \extrap{43.6\%} in MSA, a paired gap of \extrap{11.5} points, and
-falls again to between \extrap{18.9\%} and \extrap{22.4\%} in the four
-dialects (Table~\ref{tab:main}). The ordering English $>$ MSA $>$ dialects
-holds in every family. \todo{Replace with the four-model table; state McNemar
-$p$ per family.}
+Figure~\ref{fig:six} and Table~\ref{tab:six} give the main result. English
+succeeds on \rateen\% of tasks, MSA on \ratemsa\%, and the four dialects on
+between \dialectmin\% and \dialectmax\%. The three tiers are well separated.
+On the \npairenmsa{} paired tasks, English beats MSA on \foenmsa{} tasks and
+MSA beats English on \soenmsa{} (paired gap \gapenmsa{} points, McNemar
+$p=\penmsa$). The drop from MSA to each dialect is larger than the drop from
+English to MSA: between \gapmsaqa{} and \gapmsasd{} points, each with
+$p<0.001$ (Table~\ref{tab:pairwise}). The dialects are close to one another and
+far from MSA: a model that handles MSA is not thereby handling the Arabic that
+people actually speak.
 
 \begin{table}[t]
 \centering
 \small
-\begin{tabular}{llrrrrrr}
-\toprule
-Model & Family & EN & MSA & EG & SY & QA & SD \\
-\midrule
-GPT-5.4 & Desktop & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
-GPT-5.4 & Web & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
-GPT-5.4 & Terminal & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
-Gemini 3.7 Flash & All & \extrap{--} & \extrap{--} & & & & \\
-Claude Sonnet 5 & All & \extrap{--} & \extrap{--} & & & & \\
-Claude Opus 4.8 & All & \extrap{--} & \extrap{--} & & & & \\
-\bottomrule
-\end{tabular}
-\caption{Success rate (\%) by model, family, and language over runs with a
-valid verdict. \todo{Generated table; add $n$ per cell and confidence
-intervals.}}
-\label{tab:main}
+\input{tables/six_language}
+\caption{GPT-5.4 success rate by language on the audited borrowed tasks.
+Runs with an evaluation error are excluded from the denominator.}
+\label{tab:six}
 \end{table}
 
-\paragraph{Is the gap the same for every model?}
-\todo{Universality: report the EN--MSA gap per model with its interval; say
-whether the ordering of models is the same in both languages; heat map of
-per-task outcomes by model and language with the pairs that are not
-significantly different marked.}
+\begin{table}[t]
+\centering
+\small
+\input{tables/pairwise}
+\caption{Paired comparisons on tasks with a genuine verdict in both languages.
+``First only'' counts tasks the first language passed and the second failed.
+The McNemar test uses the two discordant counts.}
+\label{tab:pairwise}
+\end{table}
 
-\paragraph{Where the gap lives.}
-\todo{Per-family and per-source split: borrowed vs native; desktop vs web vs
-terminal; web split by native-Arabic sites vs browser-translated sites.}
+\paragraph{The ordering holds in every family.}
+Figure~\ref{fig:family} splits the result by family. Desktop tasks
+(LibreOffice, GNOME, Chrome; $n=\ntasksdesktop$) and terminal tasks
+($n=\ntasksterminal$) both show the same English $>$ MSA $>$ dialect order.
+The audited web set here is only \ntasksweb{} tasks; the web result comes from
+the multi-model experiment below.
 
-\paragraph{Human translation versus model-drafted arms.}
-\todo{Provenance split: gap on tasks whose Arabic arm was human-translated vs
-model-drafted (native MSA), as a within-benchmark check of the
-translation-artifact concern raised by \citet{kim2026lilt}.}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.62\linewidth]{figures/res_family.pdf}
+    \caption{Success rate by family and language for GPT-5.4.}
+    \label{fig:family}
+\end{figure}
 
-\paragraph{Cost.}
-\todo{Tokens and steps per arm: do Arabic runs use more steps and more tokens
-for the same task? Report the ratio per family; connect to the budget-edge
-divergences found in adjudication.}
+\paragraph{Per-task view.}
+Figure~\ref{fig:grid} shows every task as a row and every language as a
+column. Of the \ccN{} tasks with a verdict in all six languages,
+\ccAllFail{} fail everywhere and \ccAllPass{} pass everywhere; the language
+gap lives in the middle. The most common single pattern after all-fail is
+``English and MSA pass, all four dialects fail'' (\ccEnMsaOnly{} tasks),
+followed by ``English only'' (\ccEnOnly{} tasks). When MSA passes, the
+majority of dialects fail on \ccMsaPassDialFail{} tasks and pass on
+\ccMsaPassDialPass{}.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/res_task_grid.pdf}
+    \caption{Outcome of every audited task (rows) in every language
+    (columns); green is a pass. Rows are grouped by family and sorted by the
+    number of languages that pass.}
+    \label{fig:grid}
+\end{figure}
+
+\paragraph{How runs end.}
+Figure~\ref{fig:endings} shows how the failed runs across all six languages
+ended. \failDone\% ended with the agent declaring the task done when it was
+not, \failSteps\% ran out of steps, and \failGaveUp\% ended with the agent
+giving up. The agent's own confidence is therefore not a useful signal: most
+failures are runs the agent believed it had completed. Median steps per run
+were \medstepsen{} in English and \medstepsmsa{} in MSA; the dialect arms
+were shorter (\medstepssy{}--\medstepseg{} steps), consistent with giving up
+or declaring done earlier rather than running out of budget.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.55\linewidth]{figures/res_fail_endings.pdf}
+    \caption{How failed runs ended, by family (inner ring) and stop reason
+    (outer ring), over all six languages.}
+    \label{fig:endings}
+\end{figure}
+
+\subsection{Four models, English and MSA}
+\label{sec:multimodel}
+
+\todo{The four-model experiment on the full 191-task roster (GPT-5.4, Gemini
+3.7 Flash, Claude Sonnet 5, Claude Opus 4.8) is running at the time of
+writing. This subsection will report: the main model $\times$ family $\times$
+language table with paired gaps and McNemar $p$; whether the gap is present
+for every model and whether the model ordering is the same in both languages;
+the web family split by native-Arabic sites vs browser-translated sites; the
+provenance split (human-translated vs model-drafted Arabic arms); and steps
+and tokens per arm.}
 
 \paragraph{Comparison with the original benchmarks.}
-Our English arm on borrowed tasks can be checked against the results the
-original benchmarks published for the same tasks. \todo{Table: for each
-borrowed family, our English success rate for each model beside the rate the
-benchmark's own runs report on the same tasks (from their published per-task
-results); note where a model was not run upstream and the closest published
-model.} Agreement here is a validity check on the harness; a large divergence
-would indicate a harness difference rather than a language effect.
+\todo{Table: our English success rate per model on borrowed tasks beside the
+rate the benchmark's own published runs report on the same tasks (from their
+released per-task results), noting where the same model was not run upstream
+and which model was the closest published one.} Agreement here is a validity
+check on the harness rather than a result about language.
