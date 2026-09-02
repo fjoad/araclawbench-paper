@@ -1,199 +1,189 @@
-# Upstream per-task results for the 171 borrowed tasks (collected 2026-09-02, official sources only)
+# Upstream per-task results for the 171 borrowed tasks — FROM THE BENCHMARK WEBSITES (collected 2026-09-02)
 
-**What this is.** For each borrowed task, the verdict the ORIGINAL benchmark's own published runs
-recorded for a model — pulled from the projects' official artifacts on the public internet, not
-from anything in our repo. Sources:
-- ClawBench V1: `NAIL-Group/ClawBenchV1Trace` (HuggingFace; one `run-meta.json` per run with a
-  `passed` flag). ClawBench V2: `TIGER-Lab/ClawBenchV2Trace` (per-run `judge.json`; pass = judge
-  `match: true`). Aggregate cross-check: `TIGER-Lab/ClawBench/leaderboard/results.csv`.
-- Terminal-Bench: `laude-institute/terminal-bench-leaderboard` (TB-core 0.1.1 run logs, per-task
-  `is_resolved`) and `RDI-Foundation/terminal-bench-leaderboard` (TB 2.0; agents anonymous).
-- OSWorld-Verified: `os-world.github.io/static/data/osworld_verified_results.xlsx` (70 official
-  entries, per-domain only) and `xlangai/ubuntu_osworld_verified_trajs` (per-task trajectories, in
-  2–7 GB archives per model).
-**Cell rule.** 1 = at least one published attempt passed; 0 = every published attempt failed;
-— = that benchmark never published a run of that model on that task.
+Sources: claw-bench.com `/api/difficulty` (V1: per-task per-model outcomes for 7 models, the same
+data shown at claw-bench.com/tasks#task/N) and `/api/traces` (V2: per-session `passed` flags for 6
+models; cell = 1 if any session passed). Terminal-Bench: laude-institute/terminal-bench-leaderboard
+run logs (TB-core 0.1.1; only 4 of our 18 tasks exist there; 2025 models only). OSWorld-Verified:
+official board has none of our four models; per-task data not extracted.
+Cell rule: 1 = passed, 0 = failed, — = that model was never published on that task.
 
-**Coverage of OUR FOUR MODELS (exact names):**
-- gpt-5.4 (gpt-5.4-2026-03-05): published only on ClawBench V1 → 34 of our 39 V1 tasks, **0 passes**.
-  Not published on ClawBench V2, OSWorld-Verified, or any Terminal-Bench board.
-- gemini-3.7-flash, claude-opus-4.8, claude-sonnet-5: **not published on any of the three
-  benchmarks for any of our tasks.** (Closest published relatives are given in the last column.)
-**Closest-relative facts (our task subset):** ClawBench V1 — gemini-3-flash-preview 0/35,
-gemini-3.1-pro-preview 0/31, gemini-3.1-flash-lite 0/33, claude-opus-4-6 7/12, claude-sonnet-4-6
-7/39. Terminal-Bench 1.0 (4 overlapping tasks) — gpt-5, claude-4.5-sonnet, claude-4.1-opus each
-pass 3 of 4. OSWorld: no per-task data extracted (archives too large; exact models absent).
+EXACT-MODEL COVERAGE: GPT-5.4 is published on ClawBench V1 only (39/39 of our V1 tasks: 3 pass,
+36 fail). Gemini 3.7 Flash, Claude Opus 4.8, Claude Sonnet 5: not published on any benchmark for
+any of our tasks. Closest published relatives are the remaining columns.
 
-| task | bench | gpt-5.4 | gemini-3.7-flash | opus-4.8 | sonnet-5 | closest published model → 1/0 |
-|---|---|:-:|:-:|:-:|:-:|---|
-| osworld:01b269ae-2111-4a07-81fd-3fcd711993b0 | osworld | — | — | — | — | none published |
-| osworld:035f41ba-6653-43ab-aa63-c86d449d62e5 | osworld | — | — | — | — | none published |
-| osworld:09a37c51-e625-49f4-a514-20a773797a8a | osworld | — | — | — | — | none published |
-| osworld:0c825995-5b70-4526-b663-113f4c999dd2 | osworld | — | — | — | — | none published |
-| osworld:0d8b7de3-e8de-4d86-b9fd-dd2dce58a217 | osworld | — | — | — | — | none published |
-| osworld:0e47de2a-32e0-456c-a366-8c607ef7a9d2 | osworld | — | — | — | — | none published |
-| osworld:0e763496-b6bb-4508-a427-fad0b6c3e195 | osworld | — | — | — | — | none published |
-| osworld:12382c62-0cd1-4bf2-bdc8-1d20bf9b2371 | osworld | — | — | — | — | none published |
-| osworld:185f29bd-5da0-40a6-b69c-ba7f4e0324ef | osworld | — | — | — | — | none published |
-| osworld:1f18aa87-af6f-41ef-9853-cdb8f32ebdea | osworld | — | — | — | — | none published |
-| osworld:20236825-b5df-46e7-89bf-62e1d640a897 | osworld | — | — | — | — | none published |
-| osworld:2888b4e6-5b47-4b57-8bf5-c73827890774 | osworld | — | — | — | — | none published |
-| osworld:2c1ebcd7-9c6d-4c9a-afad-900e381ecd5e | osworld | — | — | — | — | none published |
-| osworld:30e3e107-1cfb-46ee-a755-2cd080d7ba6a | osworld | — | — | — | — | none published |
-| osworld:337d318b-aa07-4f4f-b763-89d9a2dd013f | osworld | — | — | — | — | none published |
-| osworld:357ef137-7eeb-4c80-a3bb-0951f26a8aff | osworld | — | — | — | — | none published |
-| osworld:37608790-6147-45d0-9f20-1137bb35703d | osworld | — | — | — | — | none published |
-| osworld:386dbd0e-0241-4a0a-b6a2-6704fba26b1c | osworld | — | — | — | — | none published |
-| osworld:3a93cae4-ad3e-403e-8c12-65303b271818 | osworld | — | — | — | — | none published |
-| osworld:3aaa4e37-dc91-482e-99af-132a612d40f3 | osworld | — | — | — | — | none published |
-| osworld:415ef462-bed3-493a-ac36-ca8c6d23bf1b | osworld | — | — | — | — | none published |
-| osworld:42d25c08-fb87-4927-8b65-93631280a26f | osworld | — | — | — | — | none published |
-| osworld:46407397-a7d5-4c6b-92c6-dbe038b1457b | osworld | — | — | — | — | none published |
-| osworld:4bcb1253-a636-4df4-8cb0-a35c04dfef31 | osworld | — | — | — | — | none published |
-| osworld:4de54231-e4b5-49e3-b2ba-61a0bec721c0 | osworld | — | — | — | — | none published |
-| osworld:4e9f0faf-2ecc-4ae8-a804-28c9a75d1ddc | osworld | — | — | — | — | none published |
-| osworld:4f07fbe9-70de-4927-a4d5-bb28bc12c52c | osworld | — | — | — | — | none published |
-| osworld:51f5801c-18b3-4f25-b0c3-02f85507a078 | osworld | — | — | — | — | none published |
-| osworld:550ce7e7-747b-495f-b122-acdc4d0b8e54 | osworld | — | — | — | — | none published |
-| osworld:68a25bd4-59c7-4f4d-975e-da0c8509c848 | osworld | — | — | — | — | none published |
-| osworld:6a33f9b9-0a56-4844-9c3f-96ec3ffb3ba2 | osworld | — | — | — | — | none published |
-| osworld:6d72aad6-187a-4392-a4c4-ed87269c51cf | osworld | — | — | — | — | none published |
-| osworld:72b810ef-4156-4d09-8f08-a0cf57e7cefe | osworld | — | — | — | — | none published |
-| osworld:78aed49a-a710-4321-a793-b611a7c5b56b | osworld | — | — | — | — | none published |
-| osworld:7e429b8d-a3f0-4ed0-9b58-08957d00b127 | osworld | — | — | — | — | none published |
-| osworld:81c425f5-78f3-4771-afd6-3d2973825947 | osworld | — | — | — | — | none published |
-| osworld:8472fece-c7dd-4241-8d65-9b3cd1a0b568 | osworld | — | — | — | — | none published |
-| osworld:869de13e-bef9-4b91-ba51-f6708c40b096 | osworld | — | — | — | — | none published |
-| osworld:873cafdd-a581-47f6-8b33-b9696ddb7b05 | osworld | — | — | — | — | none published |
-| osworld:88fe4b2d-3040-4c70-9a70-546a47764b48 | osworld | — | — | — | — | none published |
-| osworld:897e3b53-5d4d-444b-85cb-2cdc8a97d903 | osworld | — | — | — | — | none published |
-| osworld:8e116af7-7db7-4e35-a68b-b0939c066c78 | osworld | — | — | — | — | none published |
-| osworld:986fc832-6af2-417c-8845-9272b3a1528b | osworld | — | — | — | — | none published |
-| osworld:98e8e339-5f91-4ed2-b2b2-12647cb134f4 | osworld | — | — | — | — | none published |
-| osworld:9f935cce-0a9f-435f-8007-817732bfc0a5 | osworld | — | — | — | — | none published |
-| osworld:a097acff-6266-4291-9fbd-137af7ecd439 | osworld | — | — | — | — | none published |
-| osworld:a0b9dc9c-fc07-4a88-8c5d-5e3ecad91bcb | osworld | — | — | — | — | none published |
-| osworld:a503b07f-9119-456b-b75d-f5146737d24f | osworld | — | — | — | — | none published |
-| osworld:a53f80cd-4a90-4490-8310-097b011433f6 | osworld | — | — | — | — | none published |
-| osworld:a728a36e-8bf1-4bb6-9a03-ef039a5233f0 | osworld | — | — | — | — | none published |
-| osworld:a96b564e-dbe9-42c3-9ccf-b4498073438a | osworld | — | — | — | — | none published |
-| osworld:a9f325aa-8c05-4e4f-8341-9e4358565f4f | osworld | — | — | — | — | none published |
-| osworld:abed40dc-063f-4598-8ba5-9fe749c0615d | osworld | — | — | — | — | none published |
-| osworld:ac1b39ff-ee4d-4483-abce-c117e98942f0 | osworld | — | — | — | — | none published |
-| osworld:b070486d-e161-459b-aa2b-ef442d973b92 | osworld | — | — | — | — | none published |
-| osworld:b5062e3e-641c-4e3a-907b-ac864d2e7652 | osworld | — | — | — | — | none published |
-| osworld:bb83cab4-e5c7-42c7-a67b-e46068032b86 | osworld | — | — | — | — | none published |
-| osworld:bb8ccc78-479f-4a2f-a71e-d565e439436b | osworld | — | — | — | — | none published |
-| osworld:bc2b57f3-686d-4ec9-87ce-edf850b7e442 | osworld | — | — | — | — | none published |
-| osworld:c7c1e4c3-9e92-4eba-a4b8-689953975ea4 | osworld | — | — | — | — | none published |
-| osworld:cabb3bae-cccb-41bd-9f5d-0f3a9fecd825 | osworld | — | — | — | — | none published |
-| osworld:ce88f674-ab7a-43da-9201-468d38539e4a | osworld | — | — | — | — | none published |
-| osworld:d53ff5ee-3b1a-431e-b2be-30ed2673079b | osworld | — | — | — | — | none published |
-| osworld:d9b7c649-c975-4f53-88f5-940b29c47247 | osworld | — | — | — | — | none published |
-| osworld:da52d699-e8d2-4dc5-9191-a2199e0b6a9b | osworld | — | — | — | — | none published |
-| osworld:da922383-bfa4-4cd3-bbad-6bebab3d7742 | osworld | — | — | — | — | none published |
-| osworld:df67aebb-fb3a-44fd-b75b-51b6012df509 | osworld | — | — | — | — | none published |
-| osworld:e135df7c-7687-4ac0-a5f0-76b74438b53e | osworld | — | — | — | — | none published |
-| osworld:e1e75309-3ddb-4d09-92ec-de869c928143 | osworld | — | — | — | — | none published |
-| osworld:e246f6d8-78d7-44ac-b668-fcf47946cb50 | osworld | — | — | — | — | none published |
-| osworld:e528b65e-1107-4b8c-8988-490e4fece599 | osworld | — | — | — | — | none published |
-| osworld:eb303e01-261e-4972-8c07-c9b4e7a4922a | osworld | — | — | — | — | none published |
-| osworld:edb61b14-a854-4bf5-a075-c8075c11293a | osworld | — | — | — | — | none published |
-| osworld:f201fbc3-44e6-46fc-bcaa-432f9815454c | osworld | — | — | — | — | none published |
-| osworld:f23acfd2-c485-4b7c-a1e7-d4303ddfe864 | osworld | — | — | — | — | none published |
-| osworld:f3b19d1e-2d48-44e9-b4e1-defcae1a0197 | osworld | — | — | — | — | none published |
-| osworld:f9584479-3d0d-4c79-affa-9ad7afdd8850 | osworld | — | — | — | — | none published |
-| clawbench-v1:1 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:6 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:35 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=0; claude-sonnet-4-6=1 |
-| clawbench-v1:45 | clawbench | — | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:91 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:128 | clawbench | — | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=0; claude-sonnet-4-6=0 |
-| clawbench-v1:139 | clawbench | 0 | — | — | — | claude-sonnet-4-6=0 |
-| clawbench-v1:246 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:265 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:266 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:273 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:274 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:363 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:369 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:403 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:470 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:482 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:486 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:559 | clawbench | — | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:565 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:583 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:606 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:607 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:627 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:632 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:634 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:639 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:671 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=0; claude-sonnet-4-6=0 |
-| clawbench-v1:672 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=0; claude-sonnet-4-6=0 |
-| clawbench-v1:685 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=0; claude-sonnet-4-6=0 |
-| clawbench-v1:687 | clawbench | 0 | — | — | — | claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:700 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:710 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=0 |
-| clawbench-v1:766 | clawbench | — | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:778 | clawbench | — | — | — | — | gemini-3-flash-preview=0; claude-opus-4-6=1; claude-sonnet-4-6=1 |
-| clawbench-v1:788 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:807 | clawbench | 0 | — | — | — | claude-sonnet-4-6=0 |
-| clawbench-v1:812 | clawbench | 0 | — | — | — | gemini-3-flash-preview=0; claude-sonnet-4-6=0 |
-| clawbench-v1:815 | clawbench | 0 | — | — | — | claude-sonnet-4-6=0 |
-| clawbench-v2:86 | clawbench | — | — | — | — | glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:284 | clawbench | — | — | — | — | gpt-5.5=1; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:372 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:413 | clawbench | — | — | — | — | glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:468 | clawbench | — | — | — | — | gpt-5.5=0; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:469 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:502 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:503 | clawbench | — | — | — | — | gpt-5.5=0; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:535 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:571 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:597 | clawbench | — | — | — | — | gpt-5.5=0; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:598 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:600 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:601 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:602 | clawbench | — | — | — | — | glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:603 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:607 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:630 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:735 | clawbench | — | — | — | — | gpt-5.5=0; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:763 | clawbench | — | — | — | — | gpt-5.5=0; claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:903 | clawbench | — | — | — | — | claude-opus-4-7=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:905 | clawbench | — | — | — | — | gpt-5.5=0; glm-5.1=0; deepseek-v4-pro=0 |
-| clawbench-v2:1010 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1045 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1093 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1095 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1100 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1101 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1104 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1112 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1114 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1115 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1122 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1123 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1138 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1145 | clawbench | — | — | — | — | none published |
-| clawbench-v2:1201 | clawbench | — | — | — | — | none published |
-| terminal-bench:analyze-access-logs | terminal-bench | — | — | — | — | none published |
-| terminal-bench:bank-trans-filter | terminal-bench | — | — | — | — | none published |
-| terminal-bench:constraints-scheduling | terminal-bench | — | — | — | — | none published |
-| terminal-bench:crack-7z-hash | terminal-bench | — | — | — | — | gpt-5=1; claude-4.5-sonnet=1; claude-4.1-opus=1 |
-| terminal-bench:csv-to-parquet | terminal-bench | — | — | — | — | gpt-5=1; claude-4.5-sonnet=1; claude-4.1-opus=1 |
-| terminal-bench:extract-safely | terminal-bench | — | — | — | — | gpt-5=1; claude-4.5-sonnet=1; claude-4.1-opus=1 |
-| terminal-bench:financial-document-processor | terminal-bench | — | — | — | — | none published |
-| terminal-bench:find-restaurant | terminal-bench | — | — | — | — | none published |
-| terminal-bench:jq-data-processing | terminal-bench | — | — | — | — | none published |
-| terminal-bench:jsonl-aggregator | terminal-bench | — | — | — | — | none published |
-| terminal-bench:log-summary | terminal-bench | — | — | — | — | none published |
-| terminal-bench:log-summary-date-ranges | terminal-bench | — | — | — | — | none published |
-| terminal-bench:overfull-hbox | terminal-bench | — | — | — | — | none published |
-| terminal-bench:pandas-etl | terminal-bench | — | — | — | — | none published |
-| terminal-bench:pandas-sql-query | terminal-bench | — | — | — | — | none published |
-| terminal-bench:run-pdp11-code | terminal-bench | — | — | — | — | gpt-5=0; claude-4.5-sonnet=0; claude-4.1-opus=0 |
-| terminal-bench:speech-to-text | terminal-bench | — | — | — | — | none published |
-| terminal-bench:tree-directory-parser | terminal-bench | — | — | — | — | none published |
+NOTE: an earlier version of this file (built from a HuggingFace trace snapshot) undercounted passes
+(23 cells wrong on V1). This version is built from the website's own API and supersedes it.
+
+| task | bench | GPT-5.4 (exact) | Gemini 3.7 Flash (exact) | Claude Opus 4.8 (exact) | Claude Sonnet 5 (exact) | site: Claude Sonnet 4.6 | site: GLM-5 | site: Gemini 3 Flash | site: Claude Haiku 4.5 | site: GPT-5.4 | site: Gemini 3.1 Flash Lite | site: Kimi K2.5 | site: claude-opus-4-7 | site: deepseek-v4-pro | site: deepseek/deepseek-v4-flash:free | site: glm-5.1 | site: gpt-5.5 | site: z-ai/glm-4.5-air:free | TB-core 0.1.1: gpt-5 | TB-core 0.1.1: claude-4.5-sonnet | TB-core 0.1.1: claude-4.1-opus |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| osworld:01b269ae-2111-4a07-81fd-3fcd711993b0 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:035f41ba-6653-43ab-aa63-c86d449d62e5 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:09a37c51-e625-49f4-a514-20a773797a8a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:0c825995-5b70-4526-b663-113f4c999dd2 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:0d8b7de3-e8de-4d86-b9fd-dd2dce58a217 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:0e47de2a-32e0-456c-a366-8c607ef7a9d2 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:0e763496-b6bb-4508-a427-fad0b6c3e195 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:12382c62-0cd1-4bf2-bdc8-1d20bf9b2371 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:185f29bd-5da0-40a6-b69c-ba7f4e0324ef | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:1f18aa87-af6f-41ef-9853-cdb8f32ebdea | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:20236825-b5df-46e7-89bf-62e1d640a897 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:2888b4e6-5b47-4b57-8bf5-c73827890774 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:2c1ebcd7-9c6d-4c9a-afad-900e381ecd5e | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:30e3e107-1cfb-46ee-a755-2cd080d7ba6a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:337d318b-aa07-4f4f-b763-89d9a2dd013f | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:357ef137-7eeb-4c80-a3bb-0951f26a8aff | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:37608790-6147-45d0-9f20-1137bb35703d | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:386dbd0e-0241-4a0a-b6a2-6704fba26b1c | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:3a93cae4-ad3e-403e-8c12-65303b271818 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:3aaa4e37-dc91-482e-99af-132a612d40f3 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:415ef462-bed3-493a-ac36-ca8c6d23bf1b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:42d25c08-fb87-4927-8b65-93631280a26f | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:46407397-a7d5-4c6b-92c6-dbe038b1457b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:4bcb1253-a636-4df4-8cb0-a35c04dfef31 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:4de54231-e4b5-49e3-b2ba-61a0bec721c0 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:4e9f0faf-2ecc-4ae8-a804-28c9a75d1ddc | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:4f07fbe9-70de-4927-a4d5-bb28bc12c52c | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:51f5801c-18b3-4f25-b0c3-02f85507a078 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:550ce7e7-747b-495f-b122-acdc4d0b8e54 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:68a25bd4-59c7-4f4d-975e-da0c8509c848 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:6a33f9b9-0a56-4844-9c3f-96ec3ffb3ba2 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:6d72aad6-187a-4392-a4c4-ed87269c51cf | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:72b810ef-4156-4d09-8f08-a0cf57e7cefe | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:78aed49a-a710-4321-a793-b611a7c5b56b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:7e429b8d-a3f0-4ed0-9b58-08957d00b127 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:81c425f5-78f3-4771-afd6-3d2973825947 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:8472fece-c7dd-4241-8d65-9b3cd1a0b568 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:869de13e-bef9-4b91-ba51-f6708c40b096 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:873cafdd-a581-47f6-8b33-b9696ddb7b05 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:88fe4b2d-3040-4c70-9a70-546a47764b48 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:897e3b53-5d4d-444b-85cb-2cdc8a97d903 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:8e116af7-7db7-4e35-a68b-b0939c066c78 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:986fc832-6af2-417c-8845-9272b3a1528b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:98e8e339-5f91-4ed2-b2b2-12647cb134f4 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:9f935cce-0a9f-435f-8007-817732bfc0a5 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a097acff-6266-4291-9fbd-137af7ecd439 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a0b9dc9c-fc07-4a88-8c5d-5e3ecad91bcb | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a503b07f-9119-456b-b75d-f5146737d24f | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a53f80cd-4a90-4490-8310-097b011433f6 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a728a36e-8bf1-4bb6-9a03-ef039a5233f0 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a96b564e-dbe9-42c3-9ccf-b4498073438a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:a9f325aa-8c05-4e4f-8341-9e4358565f4f | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:abed40dc-063f-4598-8ba5-9fe749c0615d | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:ac1b39ff-ee4d-4483-abce-c117e98942f0 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:b070486d-e161-459b-aa2b-ef442d973b92 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:b5062e3e-641c-4e3a-907b-ac864d2e7652 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:bb83cab4-e5c7-42c7-a67b-e46068032b86 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:bb8ccc78-479f-4a2f-a71e-d565e439436b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:bc2b57f3-686d-4ec9-87ce-edf850b7e442 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:c7c1e4c3-9e92-4eba-a4b8-689953975ea4 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:cabb3bae-cccb-41bd-9f5d-0f3a9fecd825 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:ce88f674-ab7a-43da-9201-468d38539e4a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:d53ff5ee-3b1a-431e-b2be-30ed2673079b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:d9b7c649-c975-4f53-88f5-940b29c47247 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:da52d699-e8d2-4dc5-9191-a2199e0b6a9b | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:da922383-bfa4-4cd3-bbad-6bebab3d7742 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:df67aebb-fb3a-44fd-b75b-51b6012df509 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:e135df7c-7687-4ac0-a5f0-76b74438b53e | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:e1e75309-3ddb-4d09-92ec-de869c928143 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:e246f6d8-78d7-44ac-b668-fcf47946cb50 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:e528b65e-1107-4b8c-8988-490e4fece599 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:eb303e01-261e-4972-8c07-c9b4e7a4922a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:edb61b14-a854-4bf5-a075-c8075c11293a | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:f201fbc3-44e6-46fc-bcaa-432f9815454c | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:f23acfd2-c485-4b7c-a1e7-d4303ddfe864 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:f3b19d1e-2d48-44e9-b4e1-defcae1a0197 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| osworld:f9584479-3d0d-4c79-affa-9ad7afdd8850 | osworld | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:1 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:6 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:35 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:45 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:91 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:128 | clawbench | 0 | — | — | — | 0 | 1 | 1 | 1 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:139 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:246 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:265 | clawbench | 1 | — | — | — | 1 | 1 | 1 | 1 | 1 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:266 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:273 | clawbench | 0 | — | — | — | 1 | 1 | 1 | 1 | 0 | 1 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:274 | clawbench | 0 | — | — | — | 0 | 1 | 1 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:363 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:369 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:403 | clawbench | 0 | — | — | — | 0 | 1 | 1 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:470 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:482 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:486 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:559 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:565 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:583 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:606 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:607 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:627 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:632 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:634 | clawbench | 0 | — | — | — | 1 | 1 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:639 | clawbench | 0 | — | — | — | 1 | 1 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:671 | clawbench | 0 | — | — | — | 1 | 1 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:672 | clawbench | 0 | — | — | — | 0 | 0 | 1 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:685 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 1 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:687 | clawbench | 0 | — | — | — | 1 | 1 | 1 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:700 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 1 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:710 | clawbench | 1 | — | — | — | 0 | 1 | 1 | 0 | 1 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:766 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:778 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:788 | clawbench | 0 | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:807 | clawbench | 1 | — | — | — | 1 | 1 | 0 | 1 | 1 | 1 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:812 | clawbench | 0 | — | — | — | 1 | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v1:815 | clawbench | 0 | — | — | — | 0 | 0 | 1 | 1 | 0 | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| clawbench-v2:86 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:284 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 1 | 1 | — | 0 | — | — | — |
+| clawbench-v2:372 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:413 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:468 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:469 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 1 | — | — | — |
+| clawbench-v2:502 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | 0 | 0 | — | — | — |
+| clawbench-v2:503 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:535 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | 0 | 0 | — | — | — |
+| clawbench-v2:571 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:597 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:598 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:600 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:601 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:602 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:603 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:607 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:630 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:735 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 1 | 1 | — | 0 | — | — | — |
+| clawbench-v2:763 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | — | 0 | 0 | — | — | — |
+| clawbench-v2:903 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | — | — | 0 | — | — | — |
+| clawbench-v2:905 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | — | 0 | 0 | — | — | — |
+| clawbench-v2:1010 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:1045 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1093 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1095 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:1100 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1101 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1104 | clawbench | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | — | 0 | — | — | — |
+| clawbench-v2:1112 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:1114 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1115 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1122 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1123 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1138 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 | 0 | 0 | — | — | — |
+| clawbench-v2:1145 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| clawbench-v2:1201 | clawbench | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 0 | 1 | — | 0 | — | — | — |
+| terminal-bench:analyze-access-logs | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:bank-trans-filter | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:constraints-scheduling | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:crack-7z-hash | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 1 | 1 |
+| terminal-bench:csv-to-parquet | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 1 | 1 |
+| terminal-bench:extract-safely | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 1 | 1 | 1 |
+| terminal-bench:financial-document-processor | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:find-restaurant | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:jq-data-processing | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:jsonl-aggregator | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:log-summary | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:log-summary-date-ranges | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:overfull-hbox | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:pandas-etl | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:pandas-sql-query | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:run-pdp11-code | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 0 | 0 | 0 |
+| terminal-bench:speech-to-text | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| terminal-bench:tree-directory-parser | terminal-bench | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
