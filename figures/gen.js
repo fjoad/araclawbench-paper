@@ -23,7 +23,7 @@ function arrow(slide,x,y,w,h,color){ slide.addShape('rightArrow',{x,y,w,h,fill:{
   tb(s,'Arabic instruction (human translated)',0.5,2.1,3.2,0.25,{fs:10,bold:true,color:AR});
   tb(s,'يرجى تنزيل المدوّنات المفتوحة الآن بصيغة PDF وحفظها بعناوينها في المسار:',0.5,2.35,3.2,0.6,{fs:10.5,rtl:true,align:'right',ls:1.05});
   tb(s,'/home/user/Documents/Blog',0.5,2.95,3.2,0.3,{fs:10.5,align:'right'});
-  tb(s,'The same task is also translated to Egyptian, Syrian, Qatari and Sudanese Arabic.',0.5,3.35,3.2,0.6,{fs:9,color:MUTE,ls:1.05});
+  tb(s,'The same task is also translated to Egyptian, Syrian, Qatari, Sudanese and Algerian Arabic.',0.5,3.35,3.2,0.6,{fs:9,color:MUTE,ls:1.05});
   // rows of frames
   const fx=[4.2,6.85,9.5], fw=2.45, fh=1.37;
   const rows=[{y:0.32,lab:'English machine',col:EN,fill:ENF,imgs:['en1.jpg','en2.jpg','en3.jpg'],caps:['Print, save as PDF','Creates Documents/Blog, saves the first article','Saves the second article, done at step 21'],verdict:'PASS',vc:PASS},
@@ -36,7 +36,7 @@ function arrow(slide,x,y,w,h,color){ slide.addShape('rightArrow',{x,y,w,h,fill:{
   }
   // pipeline band
   tb(s,'How it works',0.3,4.35,4,0.25,{fs:10,bold:true,color:MUTE});
-  const nodes=[['src','Tasks','171 tasks from OSWorld, ClawBench and Terminal-Bench, plus 50 new Arabic tasks'],['tr','Translation','Translated by humans to MSA and 4 dialects: Egyptian, Syrian, Qatari, Sudanese'],['vm','Two machines','English VM\nArabic VM'],['agent','Agent','Sees screenshots and navigates with the mouse and keyboard'],['ev','Evidence','Everything is recorded. The final request is captured but not sent.'],['chk','Checker','Checks the recorded evidence. No LLM judge.'],['pair','Result','Pass or fail for each language']];
+  const nodes=[['src','Tasks','171 tasks from OSWorld, ClawBench and Terminal-Bench, plus 50 new Arabic tasks'],['tr','Translation','Translated by humans to MSA and 5 dialects: Egyptian, Syrian, Qatari, Sudanese, Algerian'],['vm','Two machines','English VM\nArabic VM'],['agent','Agent','Sees screenshots and navigates with the mouse and keyboard'],['ev','Evidence','Everything is recorded. The final request is captured but not sent.'],['chk','Checker','Checks the recorded evidence. No LLM judge.'],['pair','Result','Pass or fail for each language']];
   const nw=1.62, gap=0.24, x0=0.3, ny=4.65, nh=2.15;
   nodes.forEach((n,i)=>{ const x=x0+i*(nw+gap); box(s,x,ny,nw,nh,NEU,LINE); s.addImage({data:I[n[0]],x:x+nw/2-0.3,y:ny+0.18,w:0.6,h:0.6}); tb(s,n[1],x+0.08,ny+0.88,nw-0.16,0.32,{fs:11,bold:true,align:'center'}); tb(s,n[2],x+0.08,ny+1.2,nw-0.16,0.9,{fs:8.5,color:MUTE,align:'center',ls:1.05}); if(i<nodes.length-1) arrow(s,x+nw+0.03,ny+nh/2-0.1,gap-0.06,0.2); });
 

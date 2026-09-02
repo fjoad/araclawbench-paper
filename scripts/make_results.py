@@ -24,6 +24,8 @@ NATIVE = BENCH / "tasks/araclaw-native"
 TABLES = PAPER / "tables"; FIGS = PAPER / "figures"; TABLES.mkdir(exist_ok=True); FIGS.mkdir(exist_ok=True)
 LANGS = [("en","English"),("msa","MSA"),("eg","Egyptian"),("sy","Syrian"),("qa","Qatari"),("sd","Sudanese")]
 NAMES = dict(LANGS)
+PLOT_LANGS = LANGS + [("dz","Algerian")]   # Algerian: commissioned, not delivered -> shown empty
+COL_DZ="#D9D9D9"
 COL = {"en":"#1F4E8C","msa":"#1E6B3A","eg":"#6E6E6E","sy":"#858585","qa":"#9C9C9C","sd":"#B3B3B3"}
 FAMS = ["desktop","web","terminal"]; FCOL = {"desktop":"#4C78A8","web":"#54A24B","terminal":"#E0A93B"}
 plt.rcParams.update({"font.family":"sans-serif","font.sans-serif":["Helvetica","Arial","DejaVu Sans"],"font.size":9,"axes.spines.top":False,"axes.spines.right":False,"pdf.fonttype":42})
@@ -100,6 +102,7 @@ def main():
         vals=[r[c] for r in rows if r[c] in ("pass","fail")]; n=len(vals); k=sum(v=="pass" for v in vals); lo,hi=wilson(k,n); LR[c]=(k,n,k/n,lo,hi)
         lines.append(f"{l} & {n} & {k} & {pct(k/n)}\\% & [{pct(lo)}, {pct(hi)}] \\\\")
         M+=macro(f"nv{c}",n)+macro(f"pass{c}",k)+macro(f"rate{c}",pct(k/n))
+    lines.append("Algerian & 0 & -- & -- & not delivered \\\\")
     lines+=["\\bottomrule","\\end{tabular}"]; (TABLES/"six_language.tex").write_text("\n".join(lines)+"\n")
     S["language"]={c:{"pass":k,"n":n,"rate":r,"ci":[lo,hi]} for c,(k,n,r,lo,hi) in LR.items()}
     # ---- pairwise ----
@@ -154,11 +157,12 @@ def main():
     S["steps"]={c:{"median":statistics.median(v),"n":len(v)} for c,v in steps.items()}
     # ================= figures =================
     # six-language bars
-    fig,ax=plt.subplots(figsize=(4.6,2.5)); xs=np.arange(len(LANGS)); rates=[LR[c][2]*100 for c,_ in LANGS]
-    err=[[rates[i]-LR[c][3]*100 for i,(c,_) in enumerate(LANGS)],[LR[c][4]*100-rates[i] for i,(c,_) in enumerate(LANGS)]]
-    ax.bar(xs,rates,color=[COL[c] for c,_ in LANGS],width=0.62); ax.errorbar(xs,rates,yerr=err,fmt="none",ecolor="#222222",elinewidth=0.9,capsize=2.5)
+    fig,ax=plt.subplots(figsize=(5.0,2.5)); xs=np.arange(len(PLOT_LANGS)); rates=[LR[c][2]*100 for c,_ in LANGS]+[0.0]
+    err=[[rates[i]-LR[c][3]*100 for i,(c,_) in enumerate(LANGS)]+[0],[LR[c][4]*100-rates[i] for i,(c,_) in enumerate(LANGS)]+[0]]
+    ax.bar(xs,rates,color=[COL[c] for c,_ in LANGS]+[COL_DZ],width=0.62); ax.errorbar(xs[:-1],rates[:-1],yerr=[e[:-1] for e in err],fmt="none",ecolor="#222222",elinewidth=0.9,capsize=2.5)
+    ax.text(len(LANGS),3,"not\ndelivered",ha="center",va="bottom",fontsize=7,color="#666666")
     for i,(c,_) in enumerate(LANGS): ax.text(i,rates[i]+err[1][i]+1.5,f"{rates[i]:.1f}%\n{LR[c][0]}/{LR[c][1]}",ha="center",va="bottom",fontsize=7.5)
-    ax.set_xticks(xs); ax.set_xticklabels([l for _,l in LANGS]); ax.set_ylabel("Success rate (%)"); ax.set_ylim(0,82)
+    ax.set_xticks(xs); ax.set_xticklabels([l for _,l in PLOT_LANGS]); ax.set_ylabel("Success rate (%)"); ax.set_ylim(0,82)
     fig.tight_layout(); fig.savefig(FIGS/"res_six_language.pdf"); plt.close(fig)
     # family grouped bars
     fig,ax=plt.subplots(figsize=(4.6,2.5)); w=0.13
@@ -169,20 +173,20 @@ def main():
     fig.tight_layout(); fig.savefig(FIGS/"res_family.pdf"); plt.close(fig)
     # per-task grid
     order=sorted(rows,key=lambda r:(FAMS.index(r["family"]),-sum(r[c]=="pass" for c,_ in LANGS),r["application"]))
-    Mx=np.full((len(order),len(LANGS)),np.nan)
+    Mx=np.full((len(order),len(PLOT_LANGS)),np.nan)
     for i,r in enumerate(order):
         for j,(c,_) in enumerate(LANGS): Mx[i,j]=1.0 if r[c]=="pass" else (0.0 if r[c]=="fail" else np.nan)
-    fig,ax=plt.subplots(figsize=(3.3,7.0)); cmap=mcolors.ListedColormap(["#E4E7EC","#2E7D4F"]); cmap.set_bad("#FFFFFF")
+    fig,ax=plt.subplots(figsize=(3.5,7.0)); cmap=mcolors.ListedColormap(["#E4E7EC","#2E7D4F"]); cmap.set_bad("#F7F7F7")
     ax.imshow(Mx,cmap=cmap,aspect="auto",interpolation="nearest",vmin=0,vmax=1)
-    ax.set_xticks(range(len(LANGS))); ax.set_xticklabels([l for _,l in LANGS],rotation=45,ha="right",fontsize=7.5); ax.set_yticks([])
-    ax.set_xticks(np.arange(-0.5,len(LANGS),1),minor=True); ax.set_yticks(np.arange(-0.5,len(order),1),minor=True); ax.grid(which="minor",color="white",linewidth=0.6); ax.tick_params(which="minor",length=0)
+    ax.set_xticks(range(len(PLOT_LANGS))); ax.set_xticklabels([l for _,l in PLOT_LANGS],rotation=45,ha="right",fontsize=7.5); ax.set_yticks([]); ax.text(len(LANGS),len(order)/2,"not delivered",rotation=90,ha="center",va="center",fontsize=7,color="#777777")
+    ax.set_xticks(np.arange(-0.5,len(PLOT_LANGS),1),minor=True); ax.set_yticks(np.arange(-0.5,len(order),1),minor=True); ax.grid(which="minor",color="white",linewidth=0.6); ax.tick_params(which="minor",length=0)
     y=0
     for f in FAMS:
         n=sum(1 for r in order if r["family"]==f)
-        if n: ax.text(len(LANGS)-0.4,y+n/2,f"{f}\n(n={n})",va="center",ha="left",fontsize=7.5)
+        if n: ax.text(len(PLOT_LANGS)-0.4,y+n/2,f"{f}\n(n={n})",va="center",ha="left",fontsize=7.5)
         if y: ax.axhline(y-0.5,color="#333333",linewidth=0.8)
         y+=n
-    ax.set_xlim(-0.5,len(LANGS)+1.3); ax.set_ylabel("Tasks, grouped by family, sorted by number of passing languages"); fig.tight_layout(); fig.savefig(FIGS/"res_task_grid.pdf"); plt.close(fig)
+    ax.set_xlim(-0.5,len(PLOT_LANGS)+1.3); ax.set_ylabel("Tasks, grouped by family, sorted by number of passing languages"); fig.tight_layout(); fig.savefig(FIGS/"res_task_grid.pdf"); plt.close(fig)
     # steps per language (box)
     fig,ax=plt.subplots(figsize=(4.6,2.3)); data=[steps[c] for c,_ in LANGS]
     bp=ax.boxplot(data,widths=0.55,patch_artist=True,showfliers=False,medianprops=dict(color="black"))
