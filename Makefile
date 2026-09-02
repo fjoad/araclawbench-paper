@@ -1,7 +1,7 @@
 .PHONY: all check clean
 
 all:
-	latexmk -pdf -interaction=nonstopmode main.tex
+	latexmk -xelatex -interaction=nonstopmode main.tex
 
 # Fails while any extrapolated number or TODO is still in the sources.
 # Run before any "final" build or Overleaf upload.
