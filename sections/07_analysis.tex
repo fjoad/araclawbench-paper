@@ -1,4 +1,54 @@
-% PROVISIONAL SKELETON — real section structure is decided by the lit review
-% (notes/ holds the per-paper structural skeletons that will reshape this).
-\section{analysis}
-\todo{analysis}
+\section{Where Arabic Fails}
+\label{sec:analysis}
+
+The success rates say that a gap exists. This section says what it is made of.
+Every claim below comes from reading the recorded evidence of failed runs; the
+counts are from the audit's cause labels. \todo{Fill counts from the audit.}
+
+\paragraph{The localized file system.}
+The most common desktop failure in Arabic is a path. The agent knows the task
+wants a file in \texttt{Documents}, types that literal path into a save
+dialog, and is told the folder does not exist, because on the Arabic desktop
+the folder is called \ar{المستندات}. A person would look at the sidebar; the
+agent tends to retype the path, and often keeps retyping it until the budget
+ends (Figure~\ref{fig:overview}). \todo{Count; note that the same instruction
+names the path in Latin script in both arms, so this is an environment effect
+rather than a translation effect.}
+
+\paragraph{Right-to-left interfaces.}
+\todo{Mirrored layouts: cases where the agent clicks where a control would be
+on the English layout; compare with the mirrored-click behaviour reported by
+\citet{yang2025macosworld}. Count and examples.}
+
+\paragraph{Arabic text input and shortcuts.}
+\todo{Failures that involve typing Arabic or using keyboard shortcuts under the
+Arabic layout; distinguish genuine agent behaviour from the harness faults we
+fixed.}
+
+\paragraph{Following the instruction.}
+\todo{Cases where the Arabic arm does something the English arm does not, on
+the same site: for example adding paid extras that the instruction said to
+skip. Count; split by human-translated vs model-drafted arms.}
+
+\paragraph{Walls.}
+\todo{Signup, login, and CAPTCHA walls: how often each arm hits one; whether
+the Arabic arm hits localized walls (Arabic registration forms, localized
+CAPTCHAs) more often; the share of consequential web tasks that end at a
+wall.}
+
+\paragraph{Behaviour before failing.}
+\todo{Steps and tokens to failure per arm; whether Arabic runs explore more
+and commit less, as \citet{caciolai2026omnilingual} report for other
+languages; last-mile hesitation on consequential tasks as in
+\citet{zhang2026clawbench}.}
+
+\paragraph{Dialects.}
+\todo{What breaks between MSA and the dialects: with the same machine and
+answer key, the remaining gap is instruction understanding. Examples from the
+lecture-slot task where the dialect arms understood the request but did not
+finish the required state.}
+
+\paragraph{The Arab web.}
+\todo{Ecosystem findings from construction: share of task sites with a native
+Arabic version vs browser-translated; categories closed by phone verification;
+what this means for deploying agents for Arabic users.}

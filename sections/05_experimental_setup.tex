@@ -1,4 +1,52 @@
-% PROVISIONAL SKELETON — real section structure is decided by the lit review
-% (notes/ holds the per-paper structural skeletons that will reshape this).
-\section{experimental setup}
-\todo{experimental setup}
+\section{Experimental Setup}
+\label{sec:setup}
+
+\paragraph{Models.}
+We evaluate four models: GPT-5.4 (OpenAI, through Azure), Claude Opus 4.8 and
+Claude Sonnet 5 (Anthropic, through Google Cloud Vertex), and Gemini 3.7 Flash
+(Google, through Vertex). \todo{Add GPT-5.5 if the fifth arm runs.} Each model
+is called through its native structured-action interface (function calling for
+GPT and Gemini, the computer-use tool for Claude) with the same eight actions,
+the same screenshot, the same system prompt, the same three-turn history
+window, and the same per-task budget. Reasoning effort is left at each
+provider's default. The exact deployment name, model version, interface, and
+harness commit are recorded in every run's manifest.
+
+\paragraph{Protocol.}
+Every task runs once in English and once in MSA for every model. Borrowed
+tasks additionally run in the four dialects for GPT-5.4
+\todo{and for the other models if the dialect arms run before submission}.
+Every run gets a fresh virtual machine. Runs are scheduled on four parallel
+lanes on one host, each lane with its own recording proxy; the two arms of a
+task are not required to run at the same time, but both use the same task
+package, budget, and code revision. Divergent pairs (one arm passed, the other
+failed) are rerun three times per arm and adjudicated by hand
+(Section~\ref{sec:pairs}).
+
+\paragraph{Metrics.}
+The primary metric is the success rate per language arm, computed over runs
+with a valid verdict (PASS or FAIL); EVAL\_ERROR runs are excluded from the
+denominator and their rate is reported separately. The paired gap for a model
+is the English success rate minus the Arabic success rate over the same tasks.
+We test whether a gap is different from zero with a paired McNemar test over
+the task pairs and report Wilson confidence intervals for the rates, following
+\citet{caciolai2026omnilingual}. We report results by family (desktop, web,
+terminal), by task source (borrowed, native), and, for web tasks, by whether
+the site served native Arabic or a browser translation.
+
+\paragraph{Scale.}
+\todo{Fill from the run manifests once the arms finish:} the main experiment
+comprises \extrap{382} cells per model (191 tasks $\times$ 2 languages) for
+four models, plus \extrap{764} dialect cells for GPT-5.4, for a total of
+\extrap{about 2{,}300} cells. Runs took place between
+\extrap{August 10 and September 20, 2026}. A run takes a median of
+\extrap{9.5} minutes end to end, of which about \extrap{2.5} minutes is machine
+setup and \extrap{7} minutes agent time.
+
+\paragraph{Audit.}
+Every PASS was read against its screenshots and evidence by a human. Every
+FAIL was assigned one cause from a fixed list (never found the flow, blocked
+by a login or CAPTCHA wall, wrong-action loop, budget exhausted while
+progressing, refusal, site broken, reached the final step but did not commit).
+\todo{State the sample size for the FAIL taxonomy and the inter-rater
+agreement once the audit is done.}

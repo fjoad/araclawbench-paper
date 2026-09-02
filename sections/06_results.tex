@@ -1,4 +1,65 @@
-% PROVISIONAL SKELETON — real section structure is decided by the lit review
-% (notes/ holds the per-paper structural skeletons that will reshape this).
-\section{results}
-\todo{results}
+\section{Results}
+\label{sec:results}
+
+\todo{Every number in this section is generated from the audit ledgers into
+\texttt{tables/}. The values below are placeholders from the audited
+August~17 run (GPT-5.4, 78 desktop and terminal pairs) and are marked as
+extrapolated until the full arms are audited.}
+
+\paragraph{The gap is real and ordered.}
+On the audited GPT-5.4 pairs, the success rate falls from \extrap{55.1\%} in
+English to \extrap{43.6\%} in MSA, a paired gap of \extrap{11.5} points, and
+falls again to between \extrap{18.9\%} and \extrap{22.4\%} in the four
+dialects (Table~\ref{tab:main}). The ordering English $>$ MSA $>$ dialects
+holds in every family. \todo{Replace with the four-model table; state McNemar
+$p$ per family.}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrrrrrr}
+\toprule
+Model & Family & EN & MSA & EG & SY & QA & SD \\
+\midrule
+GPT-5.4 & Desktop & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
+GPT-5.4 & Web & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
+GPT-5.4 & Terminal & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} & \extrap{--} \\
+Gemini 3.7 Flash & All & \extrap{--} & \extrap{--} & & & & \\
+Claude Sonnet 5 & All & \extrap{--} & \extrap{--} & & & & \\
+Claude Opus 4.8 & All & \extrap{--} & \extrap{--} & & & & \\
+\bottomrule
+\end{tabular}
+\caption{Success rate (\%) by model, family, and language over runs with a
+valid verdict. \todo{Generated table; add $n$ per cell and confidence
+intervals.}}
+\label{tab:main}
+\end{table}
+
+\paragraph{Is the gap the same for every model?}
+\todo{Universality: report the EN--MSA gap per model with its interval; say
+whether the ordering of models is the same in both languages; heat map of
+per-task outcomes by model and language with the pairs that are not
+significantly different marked.}
+
+\paragraph{Where the gap lives.}
+\todo{Per-family and per-source split: borrowed vs native; desktop vs web vs
+terminal; web split by native-Arabic sites vs browser-translated sites.}
+
+\paragraph{Human translation versus model-drafted arms.}
+\todo{Provenance split: gap on tasks whose Arabic arm was human-translated vs
+model-drafted (native MSA), as a within-benchmark check of the
+translation-artifact concern raised by \citet{kim2026lilt}.}
+
+\paragraph{Cost.}
+\todo{Tokens and steps per arm: do Arabic runs use more steps and more tokens
+for the same task? Report the ratio per family; connect to the budget-edge
+divergences found in adjudication.}
+
+\paragraph{Comparison with the original benchmarks.}
+Our English arm on borrowed tasks can be checked against the results the
+original benchmarks published for the same tasks. \todo{Table: for each
+borrowed family, our English success rate for each model beside the rate the
+benchmark's own runs report on the same tasks (from their published per-task
+results); note where a model was not run upstream and the closest published
+model.} Agreement here is a validity check on the harness; a large divergence
+would indicate a harness difference rather than a language effect.
